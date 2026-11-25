@@ -104,7 +104,7 @@ const RE_PATH_TOKEN = /(?:^|[\s"'])((?:[a-z]:\/|\.{0,2}\/|\/)?[\w.\-/]{1,200}\.[
 const RE_CWD_DOT = /[ \t]\.(?:[ \t\n;&|"']|$)/
 
 // 7-10) 从 dsh-monitor 规则转来（命令层可判的部分）
-const RE_GATE = /(?:check_|verify_|selftest|closure_check|audit_)[^\s]{0,60}\.(?:py|ps1|mjs|cjs)/
+const RE_GATE = /(?:python\d*|node|bash|sh|pwsh|powershell|\.\/)[ \t][^\n]{0,40}?(?:check_|verify_|selftest|closure_check|audit_)[^\s]{0,60}\.(?:py|ps1|mjs|cjs)/
 const RE_FAKE_OK = /\|\|[ \t]*(?:true|echo)|2>[ \t]*(?:\/dev\/null|\$null)|set[ \t]+\+e/
 const RE_SYSDIR = /(?:>|>>|copy|move|cp|mv|del|rm|remove-item|set-content|out-file)[^\n]{0,80}?(?:c:\/windows|program files)/
 const RE_SESSLOG = /(?:>|>>|copy|move|del|rm|remove-item|set-content|add-content|out-file)[^\n]{0,80}?\.dsh\/sessions/
@@ -331,7 +331,7 @@ export function check(exec) {
 /* -------------------------------------------------------------- 挂载 */
 
 export function apply(ctx) {
-  log('loaded: 命令闸门 v0.3.4 | tools.guard=' + (typeof ctx.tools?.guard))
+  log('loaded: 命令闸门 v0.3.5 | tools.guard=' + (typeof ctx.tools?.guard))
   if (typeof ctx.tools?.guard !== 'function') { log('ctx.tools.guard 不可用，闸门不生效'); return }
   ctx.tools.guard((exec) => {
     try {
