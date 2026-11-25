@@ -1,0 +1,4 @@
+# dsh-cmd-gate bundle patch
+- insert:
+    - id: cmd-gate
+      name: 'dsh-cmd-gate'

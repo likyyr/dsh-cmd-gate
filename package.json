@@ -1,0 +1,17 @@
+{
+  "name": "dsh-cmd-gate",
+  "version": "0.1.0",
+  "private": false,
+  "description": "命令闸门：拒绝 sleep 长轮询和未后台化的长命令（tools/pre-execute + ctx.tools.guard）",
+  "type": "module",
+  "main": "index.js",
+  "exports": {
+    ".": "./index.js"
+  },
+  "license": "MIT",
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  }
+}
